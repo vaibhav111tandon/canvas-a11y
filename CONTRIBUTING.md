@@ -4,7 +4,7 @@
 2. Use Node 22.12+; run `npm ci` and `npm run dev`.
 3. Read [the test-case guide](docs/TEST-CASES.md) and current [API status](docs/API-STATUS.md).
 4. Add a minimal case with a stable ID, expected behavior, evidence scope and manual instructions where necessary.
-5. Run `npm test` and `npm run build`.
+5. Run `npm run format`, `npm run lint`, `npm test` and `npm run build`.
 6. Exercise the case with the experimental API enabled and disabled. Include exact browser version, OS, flags, API generation and an exported report in the PR. If experimental testing is unavailable, state that explicitly.
 7. Keep changes small, JavaScript/JSX only, and avoid dependencies unless they solve a concrete problem.
 

@@ -2,6 +2,7 @@
 name: Propose a test case
 about: Suggest a minimal accessibility or interoperability test
 ---
+
 ## Behavior to test
 
 ## Minimal fixture

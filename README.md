@@ -4,8 +4,6 @@
 
 An experimental browser laboratory, not a production-readiness badge or WCAG certification tool.
 
-Planned primary domain: **canvasa11y.dev**. Domain registration and DNS configuration are separate from this repository.
-
 ## Run locally
 
 Requires Node 22.12+ for development/build tooling only. The application runs entirely in the browser; it has no Node backend, accounts, telemetry, or report server.
@@ -14,6 +12,8 @@ Requires Node 22.12+ for development/build tooling only. The application runs en
 npm ci
 npm run dev
 # Open http://localhost:4173
+npm run lint
+npm run format:check
 npm test
 npm run build
 npm run preview
@@ -47,12 +47,12 @@ The runner detects support by API presence and checks that a native paint comple
 
 ## Interpreting results
 
-| Status | Meaning |
-| --- | --- |
-| PASS | The listed automated assertions passed in this browser session. |
-| FAIL | At least one measurable assertion failed, or execution failed after setup. Inspect evidence. |
+| Status      | Meaning                                                                                                                                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| PASS        | The listed automated assertions passed in this browser session.                                                                                                    |
+| FAIL        | At least one measurable assertion failed, or execution failed after setup. Inspect evidence.                                                                       |
 | UNSUPPORTED | Native API unavailable, unrecognized API generation, no completed native paint, or the check requires human/AT verification. The reason distinguishes these cases. |
-| NOT RUN | No result has been collected. |
+| NOT RUN     | No result has been collected.                                                                                                                                      |
 
 A **DOM precondition PASS is not an accessibility PASS**. Browser JavaScript cannot generally read the platform accessibility tree, computed accessible names, screen-reader output or trusted Tab navigation. Manual observations are stored separately and never overwrite automated status. Synthetic keyboard events do not simulate browser Tab navigation.
 
@@ -80,7 +80,11 @@ src/
  docs/                  Architecture, API status and contribution guide
 ```
 
-Start simple: one Vite application, React and React DOM as the only runtime dependencies. The core and cases are separated so they can later move to `packages/core`, `packages/browser-tests` and `packages/cli`. There is no CLI package today; `npx canvas-a11y-test` is a future goal, not a published command.
+Start simple: one Vite application, React and React DOM as the only runtime dependencies. Measurement logic, native browser fixtures and the React interface live in separate modules.
+
+## Code quality
+
+Run `npm run format` to format the source and documentation, `npm run format:check` to check formatting, and `npm run lint` to run ESLint. `npm run lint:fix` applies supported automatic fixes. Both CI and the Pages build require these checks to pass.
 
 ## Contribute
 
@@ -89,15 +93,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [test-case guide](docs/TEST-CASES.md), a
 ## Privacy
 
 Reports remain in memory until exported. Reloading clears the session. JSON includes user agent, source URL, timestamps, measurements and manually entered notes. Review your report before attaching it to a public issue.
-
-## Roadmap
-
-- A Playwright/CDP adapter for trusted keyboard input and accessibility-tree snapshots.
-- Browser/OS/AT comparison, Chrome Canary automation and historical interop results.
-- Immutable shareable reports and small browser/spec repro pages.
-- CLI, Storybook and Digital Data Reports integrations.
-
-No server or speculative monorepo packages are included in V1.
 
 ## License
 

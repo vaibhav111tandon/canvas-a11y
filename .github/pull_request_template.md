@@ -3,6 +3,9 @@
 ## Evidence scope
 
 ## Validation
+
+- [ ] `npm run lint`
+- [ ] `npm run format:check`
 - [ ] `npm test`
 - [ ] `npm run build`
 - [ ] Unsupported-browser behavior checked

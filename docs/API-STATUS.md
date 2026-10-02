@@ -8,16 +8,16 @@ Verified 2026-10-02 against primary sources. This is a dated snapshot, not a pro
 
 ## Adapters
 
-| Detection | Behavior |
-| --- | --- |
-| Canvas `content` plus `updateElementGeometry()` and context `drawElementImage()` | Set `content="drawable"`; set descendant `drawable`; rely on native automatic geometry updates. |
-| Canvas `layoutSubtree` plus context `drawElementImage()` | Set `layoutsubtree`; draw in the paint event; apply the returned matrix to the direct child's CSS transform with origin 0 0. |
-| Neither recognized shape | UNSUPPORTED. Do not guess from user-agent version. |
+| Detection                                                                        | Behavior                                                                                                                     |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Canvas `content` plus `updateElementGeometry()` and context `drawElementImage()` | Set `content="drawable"`; set descendant `drawable`; rely on native automatic geometry updates.                              |
+| Canvas `layoutSubtree` plus context `drawElementImage()`                         | Set `layoutsubtree`; draw in the paint event; apply the returned matrix to the direct child's CSS transform with origin 0 0. |
+| Neither recognized shape                                                         | UNSUPPORTED. Do not guess from user-agent version.                                                                           |
 
 The modern playground negative control deliberately assigns incorrect geometry after drawing. The legacy negative control omits applying the returned draw transform. These are intentionally incorrect author behaviors, not browser conformance failures.
 
 ## Scope
 
-V1 exercises the main-thread 2D API. WebGL, WebGPU, OffscreenCanvas, captureElementImage and worker geometry delivery are future work. Nested drawable is offered only for the newer generation. API presence is not proof of functional support: the runner waits for an actual native paint and records failures/timeouts.
+V1 exercises the main-thread 2D API. WebGL, WebGPU, OffscreenCanvas, captureElementImage and worker geometry delivery are outside its scope. Nested drawable is offered only for the newer generation. API presence is not proof of functional support: the runner waits for an actual native paint and records failures/timeouts.
 
 The browser support page exposes local detected features and user agent. It avoids a hard-coded browser/version support matrix that would age poorly.

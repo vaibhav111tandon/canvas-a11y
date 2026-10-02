@@ -2,6 +2,7 @@
 name: Canvas A11y bug
 about: Report a problem in the laboratory or runner
 ---
+
 ## Description
 
 ## Reproduction steps

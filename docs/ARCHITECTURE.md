@@ -23,7 +23,3 @@ A static React/Vite application. Node is used only to install dependencies, buil
 ## Known limitations
 
 No accessibility-tree access, trusted keyboard automation, arbitrary user HTML editor, immutable report hosting, CI browser matrix or general-purpose image segmentation. AABB matching cannot prove shape overlap or hit-testing correctness. Test fixtures are co-resident with the app rather than sandboxed iframes; case authors are trusted source contributors.
-
-## Future extraction
-
-Move pure measurement/detection and result schemas into `packages/core`; fixtures and checks into `packages/browser-tests`; add `packages/cli` for Node/Playwright only once an external runner is needed. The CLI should reuse the evidence schema and stable case IDs, add an explicit CDP/AX evidence source, and never silently substitute DOM bounds for accessibility bounds.

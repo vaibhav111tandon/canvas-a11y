@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+test-results/
+package-lock.json
+.openai/
+.sites-runtime/

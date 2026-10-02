@@ -4,14 +4,14 @@ Add a `define(...)` entry to `src/cases/index.js`. Existing fixtures/modes let c
 
 ```js
 // id, title, category, expected, fixture, mode, manual instructions
- define(
-   'button-focus-regression',
-   'Focus reaches the drawn button',
-   'Focus',
-   'Calling focus() sets document.activeElement to the drawn button.',
-   'button',
-   'focus'
- );
+define(
+  'button-focus-regression',
+  'Focus reaches the drawn button',
+  'Focus',
+  'Calling focus() sets document.activeElement to the drawn button.',
+  'button',
+  'focus',
+);
 ```
 
 The helper expands to a declarative object:
@@ -33,7 +33,7 @@ The helper expands to a declarative object:
 
 Supported modes: `geometry`, `focus`, `disabled`, `removal`, `animation`, `dom`, `manual`. For bespoke assertions, add an optional `run: async ({ canvas, target, drawable, check, measure, settled }) => { ... }`. `check(name, condition, details)` stores an assertion. The custom runner executes after native setup and paint, and must produce at least one check. Never use it to manufacture browser support.
 
-A new fixture belongs in `core/runner.js` for V1. Keep DOM construction confined there. The fixture is disposed between tests. No timers or global event listeners may survive disposal. A future extraction can give fixtures individual modules when this registry grows.
+A new fixture belongs in `core/runner.js` for V1. Keep DOM construction confined there. The fixture is disposed between tests. No timers or global event listeners may survive disposal.
 
 ## Evidence contract
 
